@@ -1,37 +1,49 @@
 return {
-	"rebelot/kanagawa.nvim",
+	"marko-cerovac/material.nvim",
 	priority = 1000,
 	config = function()
-		require("kanagawa").setup({
-			overrides = function(colors)
-				local theme = colors.theme
-				return {
-					NormalFloat = { bg = "none" },
-					FloatBorder = { bg = "none" },
-					FloatTitle = { bg = "none" },
-
-					-- Save an hlgroup with dark background and dimmed foreground
-					-- so that you can use it where your still want darker windows.
-					-- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
-					NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
-
-					-- Popular plugins that open floats will link to NormalFloat by default;
-					-- set their background accordingly if you wish to keep them dark and borderless
-					LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-					MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-				}
-			end,
-			colors = {
-				theme = {
-					all = {
-						ui = {
-							bg_gutter = "none",
-						},
-					},
-				},
+		require("material").setup({
+			contrast = {
+				floating_windows = true, -- Enable contrast for floating windows
 			},
+
+			plugins = { -- Uncomment the plugins that you use to highlight them
+				-- Available plugins:
+				-- "coc",
+				-- "colorful-winsep",
+				-- "dap",
+				"dashboard",
+				-- "eyeliner",
+				-- "fidget",
+				-- "flash",
+				"gitsigns",
+				-- "harpoon",
+				-- "hop",
+				-- "illuminate",
+				"indent-blankline",
+				-- "lspsaga",
+				-- "mini",
+				-- "neogit",
+				-- "neotest",
+				-- "neo-tree",
+				-- "neorg",
+				-- "noice",
+				"nvim-cmp",
+				-- "nvim-navic",
+				-- "nvim-tree",
+				"nvim-web-devicons",
+				-- "rainbow-delimiters",
+				-- "sneak",
+				"telescope",
+				-- "trouble",
+				"which-key",
+				-- "nvim-notify",
+			},
+
+			lualine_style = "stealth", -- Lualine style ( can be 'stealth' or 'default' )
 		})
 
-		vim.cmd("colorscheme kanagawa")
+		vim.g.material_style = "darker"
+		vim.cmd("colorscheme material")
 	end,
 }
