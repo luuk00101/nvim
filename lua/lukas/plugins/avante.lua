@@ -8,6 +8,9 @@ return {
 			refresh = "<leader>ar",
 			edit = "<leader>ae",
 		},
+		file_selector = {
+			provider = "telescope",
+		},
 	},
 	build = "make",
 	dependencies = {
@@ -41,9 +44,5 @@ return {
 			},
 			ft = { "markdown", "Avante" },
 		},
-	},
-	--- @class AvanteFileSelectorConfig
-	file_selector = {
-		provider = "telescope",
 	},
 }
