@@ -49,8 +49,8 @@ return {
 				"staticcheck",
 				"prettier", -- prettier formatter
 				"stylua", -- lua formatter
-				"black", -- python formatter
-				"ruff", -- python linter
+				"ruff", -- python linter and formatter
+				"mypy", -- python type checker
 				"eslint_d", -- eslint language server
 				"rust-analyzer",
 			},

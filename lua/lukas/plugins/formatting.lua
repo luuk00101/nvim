@@ -19,7 +19,7 @@ return {
 				graphql = { "prettier" },
 				liquid = { "prettier" },
 				lua = { "stylua" },
-				python = { "black", "ruff" },
+				python = { "ruff_format" },
 				c = { "clang_format" },
 				go = { "gofumpt, goimports-reviser" },
 			},

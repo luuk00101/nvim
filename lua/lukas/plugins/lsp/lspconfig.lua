@@ -107,14 +107,23 @@ return {
 			end,
 			["pyright"] = function()
 				lspconfig["pyright"].setup({
+					capabilities = (function()
+						local capabilities = vim.lsp.protocol.make_client_capabilities()
+						capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
+						return capabilities
+					end)(),
 					on_attach = on_attach,
-					capabilities = capabilities,
 					settings = {
+						pyright = {
+							-- Using Ruff's import organizer
+							disableOrganizeImports = true,
+						},
 						python = {
 							analysis = {
 								typeCheckingMode = "basic",
 								autoSearchPaths = true,
 								useLibraryCodeForTypes = true,
+								-- ignore = { "*" },
 							},
 						},
 					},
@@ -129,6 +138,23 @@ return {
 							".git"
 						)(fname) or vim.fn.getcwd()
 					end,
+				})
+			end,
+			["ruff"] = function()
+				lspconfig["ruff"].setup({
+					on_attach = function(client, bufnr)
+						-- Disable hover in favor of Pyright
+						client.server_capabilities.hoverProvider = false
+						on_attach(client, bufnr)
+					end,
+					capabilities = capabilities,
+					init_options = {
+						settings = {
+							lint = {
+								select = { "E", "F", "ARG" },
+							},
+						},
+					},
 				})
 			end,
 			["emmet_ls"] = function()
