@@ -1,6 +1,13 @@
 return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
+	opts = {
+		opts = {
+			inlay_hints = {
+				enabled = true,
+			},
+		},
+	},
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
@@ -64,6 +71,11 @@ return {
 
 				opts.desc = "Restart LSP"
 				keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+				opts.desc = "Toggle inlay hints"
+				keymap.set("n", "<leader>th", function()
+					vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+				end, opts)
 			end,
 		})
 
@@ -72,7 +84,6 @@ return {
 		local on_attach = function(client, bufnr) end
 
 		-- Change the Diagnostic symbols in the sign column (gutter)
-		-- (not in youtube nvim video)
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 		for type, icon in pairs(signs) do
 			local hl = "DiagnosticSign" .. type
@@ -105,25 +116,34 @@ return {
 					},
 				})
 			end,
-			["pyright"] = function()
-				lspconfig["pyright"].setup({
-					capabilities = (function()
-						local capabilities = vim.lsp.protocol.make_client_capabilities()
-						capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
-						return capabilities
-					end)(),
+			["basedpyright"] = function()
+				lspconfig["basedpyright"].setup({
+					-- Turn on inlay hints by default
+					-- on_attach = function(client, bufnr)
+					-- 	on_attach(client, bufnr)
+					-- 	-- Enable inlay hints if supported
+					-- 	if client.server_capabilities.inlayHintProvider then
+					-- 		vim.lsp.inlay_hint.enable(true)
+					-- 	end
+					-- end,
+					-- Only leave type checkng on
+					-- capabilities = (function()
+					-- 	local capabilities = vim.lsp.protocol.make_client_capabilities()
+					-- 	capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
+					-- 	return capabilities
+					-- end)(),
 					on_attach = on_attach,
 					settings = {
 						pyright = {
 							-- Using Ruff's import organizer
 							disableOrganizeImports = true,
 						},
-						python = {
+						basedpyright = {
 							analysis = {
 								typeCheckingMode = "basic",
 								autoSearchPaths = true,
 								useLibraryCodeForTypes = true,
-								-- ignore = { "*" },
+								-- ignore = { "*" }, -- ignores ALL diagnostics
 							},
 						},
 					},
@@ -147,27 +167,23 @@ return {
 						client.server_capabilities.hoverProvider = false
 						on_attach(client, bufnr)
 					end,
-					capabilities = capabilities,
 					init_options = {
 						settings = {
 							lint = {
-								select = { "E", "F", "ARG" },
+								-- select = { "E", "F", "ARG" },
+								ignore = { "F401", "F821", "F841" },
 							},
 						},
 					},
 				})
 			end,
 			["emmet_ls"] = function()
-				-- configure emmet language server
 				lspconfig["emmet_ls"].setup({
-					capabilities = capabilities,
 					filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
 				})
 			end,
 			["lua_ls"] = function()
-				-- configure lua server (with special settings)
 				lspconfig["lua_ls"].setup({
-					capabilities = capabilities,
 					settings = {
 						Lua = {
 							-- make the language server recognize "vim" global
