@@ -37,7 +37,7 @@ return {
 				"tailwindcss",
 				"lua_ls",
 				"emmet_ls",
-				"basedpyright",
+				"jedi_language_server",
 			},
 			automatic_installation = true,
 		})

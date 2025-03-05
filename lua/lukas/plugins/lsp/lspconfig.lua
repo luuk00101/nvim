@@ -1,13 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
-	opts = {
-		opts = {
-			inlay_hints = {
-				enabled = true,
-			},
-		},
-	},
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
@@ -71,11 +64,6 @@ return {
 
 				opts.desc = "Restart LSP"
 				keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
-
-				opts.desc = "Toggle inlay hints"
-				keymap.set("n", "<leader>th", function()
-					vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-				end, opts)
 			end,
 		})
 
@@ -116,62 +104,12 @@ return {
 					},
 				})
 			end,
-			["basedpyright"] = function()
-				lspconfig["basedpyright"].setup({
-					-- Turn on inlay hints by default
-					-- on_attach = function(client, bufnr)
-					-- 	on_attach(client, bufnr)
-					-- 	-- Enable inlay hints if supported
-					-- 	if client.server_capabilities.inlayHintProvider then
-					-- 		vim.lsp.inlay_hint.enable(true)
-					-- 	end
-					-- end,
-					-- Only leave type checkng on
-					-- capabilities = (function()
-					-- 	local capabilities = vim.lsp.protocol.make_client_capabilities()
-					-- 	capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
-					-- 	return capabilities
-					-- end)(),
-					on_attach = on_attach,
-					settings = {
-						pyright = {
-							-- Using Ruff's import organizer
-							disableOrganizeImports = true,
-						},
-						basedpyright = {
-							analysis = {
-								typeCheckingMode = "basic",
-								autoSearchPaths = true,
-								useLibraryCodeForTypes = true,
-								-- ignore = { "*" }, -- ignores ALL diagnostics
-							},
-						},
-					},
-					root_dir = function(fname)
-						return lspconfig.util.root_pattern(
-							"pyproject.toml",
-							"setup.py",
-							"setup.cfg",
-							"requirements.txt",
-							"Pipfile",
-							"pyrightconfig.json",
-							".git"
-						)(fname) or vim.fn.getcwd()
-					end,
-				})
-			end,
 			["ruff"] = function()
 				lspconfig["ruff"].setup({
-					on_attach = function(client, bufnr)
-						-- Disable hover in favor of Pyright
-						client.server_capabilities.hoverProvider = false
-						on_attach(client, bufnr)
-					end,
 					init_options = {
 						settings = {
 							lint = {
-								-- select = { "E", "F", "ARG" },
-								ignore = { "F401", "F821", "F841" },
+								select = { "E", "F", "ARG" },
 							},
 						},
 					},
