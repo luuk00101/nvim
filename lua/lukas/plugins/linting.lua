@@ -10,7 +10,7 @@ return {
 			javascriptreact = { "eslint_d" },
 			typescriptreact = { "eslint_d" },
 			go = { "staticcheck" },
-			python = { "mypy" },
+			python = { "mypy", "vulture" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

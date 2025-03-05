@@ -52,6 +52,7 @@ return {
 				"stylua", -- lua formatter
 				"ruff", -- python linter and formatter
 				"mypy", -- python type checker
+				"vulture", -- pythnon dead code analyzer
 				"eslint_d", -- eslint language server
 				"rust-analyzer",
 			},
