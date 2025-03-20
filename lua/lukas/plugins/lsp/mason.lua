@@ -37,7 +37,7 @@ return {
 				"tailwindcss",
 				"lua_ls",
 				"emmet_ls",
-				"jedi_language_server",
+				"basedpyright",
 			},
 			automatic_installation = true,
 		})
@@ -45,14 +45,12 @@ return {
 		mason_tool_installer.setup({
 			ensure_installed = {
 				"clang-format", -- c/c++ formatter
-				"gofumpt",
-				"goimports-reviser",
-				"staticcheck",
+				"gofumpt", -- Go formatter
+				"goimports-reviser", -- Go imports organizer
+				"staticcheck", -- Go static linter
 				"prettier", -- prettier formatter
 				"stylua", -- lua formatter
 				"ruff", -- python linter and formatter
-				"mypy", -- python type checker
-				"vulture", -- pythnon dead code analyzer
 				"eslint_d", -- eslint language server
 				"rust-analyzer",
 			},
