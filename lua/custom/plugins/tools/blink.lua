@@ -24,6 +24,7 @@ return {
 				},
 				opts = {},
 			},
+			"Kaiser-Yang/blink-cmp-avante",
 		},
 		version = "1.*",
 		opts = {
@@ -36,9 +37,13 @@ return {
 			completion = { documentation = { auto_show = false } },
 
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
+				default = { "avante", "lsp", "path", "snippets", "buffer" },
 				providers = {
 					lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
+					avante = {
+						module = "blink-cmp-avante",
+						name = "Avante",
+					},
 				},
 			},
 
