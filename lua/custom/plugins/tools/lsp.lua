@@ -35,6 +35,7 @@ return {
 			local enabled_lsps = {
 				"lua_ls",
 				"jedi_language_server",
+				"ts_ls",
 				"ruff",
 				"gopls",
 				"bashls",

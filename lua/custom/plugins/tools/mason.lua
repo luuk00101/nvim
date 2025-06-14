@@ -23,7 +23,7 @@ return {
 					"clangd",
 					"lua_ls",
 					"bashls",
-					-- "basedpyright",
+					"ts_ls",
 					"ols",
 					"jedi_language_server",
 				},
