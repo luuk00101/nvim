@@ -25,7 +25,10 @@ return {
 					"bashls",
 					"ts_ls",
 					"ols",
-					"jedi_language_server",
+					"basedpyright",
+					"postgres_lsp",
+					"tailwindcss",
+					"eslint",
 				},
 				automatic_installation = true,
 			})

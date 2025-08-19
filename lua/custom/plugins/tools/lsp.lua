@@ -34,7 +34,7 @@ return {
 			-- Enable LSPs
 			local enabled_lsps = {
 				"lua_ls",
-				"jedi_language_server",
+				"basedpyright",
 				"ts_ls",
 				"ruff",
 				"gopls",
@@ -43,7 +43,9 @@ return {
 				"dockerls",
 				"docker_compose_language_service",
 				"ols",
-				"pyrefly",
+				"postgres_lsp",
+				"tailwindcss",
+				"eslint",
 			}
 
 			for _, lsp in ipairs(enabled_lsps) do
