@@ -34,7 +34,7 @@ return {
 			-- Enable LSPs
 			local enabled_lsps = {
 				"lua_ls",
-				"basedpyright",
+				"ty",
 				"ts_ls",
 				"ruff",
 				"gopls",
