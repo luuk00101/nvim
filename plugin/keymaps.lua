@@ -27,3 +27,6 @@ vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { noremap = true })
 
 -- Lazy
 vim.keymap.set("n", "<leader>lz", ":Lazy<CR>")
+
+-- Mason
+vim.keymap.set("n", "<leader>msn", ":Mason<CR>")
