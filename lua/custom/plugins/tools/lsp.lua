@@ -42,7 +42,6 @@ return {
 				"clangd",
 				"dockerls",
 				"docker_compose_language_service",
-				"ols",
 				"postgres_lsp",
 				"tailwindcss",
 				"eslint",
