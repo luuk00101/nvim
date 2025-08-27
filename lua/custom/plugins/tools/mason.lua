@@ -3,6 +3,7 @@ return {
 		"williamboman/mason.nvim",
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
 		},
 		config = function()
 			require("mason").setup({
@@ -20,6 +21,7 @@ return {
 					"dockerls",
 					"docker_compose_language_service",
 					"gopls",
+					"rust_analyzer",
 					"clangd",
 					"lua_ls",
 					"bashls",
@@ -30,6 +32,29 @@ return {
 					"eslint",
 				},
 				automatic_installation = true,
+			})
+
+			require("mason-tool-installer").setup({
+				ensure_installed = {
+					"clang-format",
+					"gofumpt",
+					"goimports-reviser",
+					"hadolint",
+					"jsonlint",
+					"pgformatter",
+					"postgrestools",
+					"prettier",
+					"ruff",
+					"staticcheck",
+					"stylua",
+				},
+
+				run_on_start = true,
+				integrations = {
+					["mason-lspconfig"] = false,
+					["mason-null-ls"] = false,
+					["mason-nvim-dap"] = false,
+				},
 			})
 		end,
 	},
