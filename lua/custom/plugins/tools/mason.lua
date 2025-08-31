@@ -28,6 +28,8 @@ return {
 					"ty",
 					"postgres_lsp",
 					"tailwindcss",
+					"ts_ls",
+					"eslint",
 				},
 				automatic_installation = true,
 			})

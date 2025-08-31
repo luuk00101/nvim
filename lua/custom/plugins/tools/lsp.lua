@@ -43,6 +43,8 @@ return {
 				"docker_compose_language_service",
 				"postgres_lsp",
 				"tailwindcss",
+				"ts_ls",
+				"eslint",
 			}
 
 			for _, lsp in ipairs(enabled_lsps) do
