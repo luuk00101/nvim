@@ -24,9 +24,3 @@ vim.keymap.set("n", "<leader>y", '"+y', { noremap = true })
 vim.keymap.set("n", "<leader>yy", '"+yy', { noremap = true })
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { noremap = true })
 vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { noremap = true })
-
--- Lazy
-vim.keymap.set("n", "<leader>lz", ":Lazy<CR>")
-
--- Mason
-vim.keymap.set("n", "<leader>msn", ":Mason<CR>")

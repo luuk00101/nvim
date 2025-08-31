@@ -35,7 +35,6 @@ return {
 			local enabled_lsps = {
 				"lua_ls",
 				"ty",
-				"ts_ls",
 				"ruff",
 				"gopls",
 				"bashls",
@@ -44,7 +43,6 @@ return {
 				"docker_compose_language_service",
 				"postgres_lsp",
 				"tailwindcss",
-				"eslint",
 			}
 
 			for _, lsp in ipairs(enabled_lsps) do
