@@ -37,6 +37,7 @@ return {
 				"ty",
 				"ruff",
 				"gopls",
+				"ols",
 				"bashls",
 				"clangd",
 				"dockerls",
