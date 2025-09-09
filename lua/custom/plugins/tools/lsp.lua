@@ -37,7 +37,6 @@ return {
 				"ty",
 				"ruff",
 				"gopls",
-				"ols",
 				"bashls",
 				"clangd",
 				"dockerls",
@@ -46,6 +45,7 @@ return {
 				"tailwindcss",
 				"ts_ls",
 				"eslint",
+				"tinymist",
 			}
 
 			for _, lsp in ipairs(enabled_lsps) do

@@ -21,7 +21,6 @@ return {
 					"dockerls",
 					"docker_compose_language_service",
 					"gopls",
-					"ols",
 					"rust_analyzer",
 					"clangd",
 					"lua_ls",
@@ -31,6 +30,7 @@ return {
 					"tailwindcss",
 					"ts_ls",
 					"eslint",
+					"tinymist",
 				},
 				automatic_installation = true,
 			})
